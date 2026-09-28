@@ -110,10 +110,17 @@
     .store-badge{
       display:block;
       width:auto;
-      max-width:100%
+      max-width:none
     }
-    .appstore-badge{width:164px;height:auto}
-    .play-badge{width:150px;height:auto}
+    .appstore-badge{
+      height:54px;
+      width:auto
+    }
+    .play-badge{
+      height:64px;
+      width:auto;
+      margin:-5px 0
+    }
     .store-note{
       flex-basis:100%;
       font-size:11px!important;
@@ -143,8 +150,8 @@
 
     @media(max-width:360px){
       .store-area{gap:8px}
-      .appstore-badge{width:150px}
-      .play-badge{width:138px}
+      .appstore-badge{height:48px}
+      .play-badge{height:57px;margin:-4px 0}
     }
     @media(min-width:640px){
       body{padding:36px 0}
