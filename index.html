@@ -48,75 +48,69 @@
     .section-title{margin:0 0 20px;text-align:center;font-size:25px;line-height:1.35;letter-spacing:-.8px}
     .feature{display:flex;gap:15px;padding:16px 0;align-items:flex-start}
     .feature+.feature{border-top:1px solid rgba(36,103,113,.12)}
-    .badge{flex:0 0 42px;height:42px;border-radius:13px;background:#fff;color:var(--brand);display:grid;place-items:center;font-weight:800;font-size:17px}
+    .badge{
+      flex:0 0 42px;width:42px;height:42px;border-radius:13px;background:#fff;color:var(--brand);
+      display:grid;place-items:center;border:1px solid rgba(36,103,113,.10)
+    }
+    .badge svg{
+      width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.9;
+      stroke-linecap:round;stroke-linejoin:round
+    }
     .feature h3{font-size:16px;margin:1px 0 4px}
-    .feature p{font-size:14px;line-height:1.58;color:var(--muted);margin:0}
+    .feature p{font-size:14px;line-height:1.55;color:var(--muted);margin:0}
 
     .communities{padding:52px 24px;text-align:center}
     .community-list{font-size:14px;line-height:2;color:var(--muted)}
     .community-more{
-      margin:22px auto 0;
-      max-width:360px;
-      display:flex;
-      align-items:center;
-      gap:12px;
-      padding:14px 16px;
-      border:1px solid var(--line);
-      border-radius:16px;
-      background:#f8fafa;
-      text-align:left;
+      margin:22px auto 0;max-width:360px;display:flex;align-items:center;gap:12px;
+      padding:14px 16px;border:1px solid var(--line);border-radius:16px;background:#f8fafa;text-align:left
     }
     .community-more-icon{
-      flex:0 0 34px;
-      width:34px;
-      height:34px;
-      border-radius:50%;
-      display:grid;
-      place-items:center;
-      background:var(--brand-soft);
-      color:var(--brand);
+      flex:0 0 34px;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;
+      background:var(--brand-soft);color:var(--brand)
     }
     .community-more-icon svg{
-      width:17px;
-      height:17px;
-      stroke:currentColor;
-      fill:none;
-      stroke-width:2;
-      stroke-linecap:round;
-      stroke-linejoin:round;
+      width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:2;
+      stroke-linecap:round;stroke-linejoin:round
     }
-    .community-more strong{
-      display:block;
-      font-size:14px;
-      color:var(--text);
-      margin-bottom:2px;
-    }
-    .community-more span{
-      display:block;
-      font-size:12px;
-      line-height:1.5;
-      color:var(--muted);
-    }
+    .community-more strong{display:block;font-size:14px;color:var(--text);margin-bottom:2px}
+    .community-more span{display:block;font-size:12px;line-height:1.5;color:var(--muted)}
 
-    .download{padding:54px 24px 44px;background:var(--brand);color:#fff;text-align:center}
+    .download{padding:54px 20px 44px;background:var(--brand);color:#fff;text-align:center}
     .download h2{font-size:29px;letter-spacing:-.9px;margin:0}
-    .download p{font-size:14px;line-height:1.65;color:rgba(255,255,255,.76);margin:10px 0 24px}
-    .store-area{display:flex;flex-direction:column;align-items:center;gap:12px}
-    .play-badge{display:block;width:210px;max-width:100%;height:auto}
-    .play-link{display:inline-block;line-height:0}
-    .play-link:active{transform:scale(.985)}
-    .appstore-coming{
-      width:190px;min-height:56px;border:1px solid rgba(255,255,255,.42);border-radius:12px;
-      display:flex;flex-direction:column;align-items:center;justify-content:center;
-      color:rgba(255,255,255,.92);background:rgba(0,0,0,.12)
+    .download>p{font-size:14px;line-height:1.65;color:rgba(255,255,255,.76);margin:10px 0 24px}
+    .store-area{
+      display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;
+      max-width:430px;margin:0 auto;align-items:stretch
     }
-    .appstore-coming strong{font-size:15px}
-    .appstore-coming span{font-size:11px;color:rgba(255,255,255,.65);margin-top:2px}
-    .store-note{font-size:11px!important;margin:2px 0 0!important;color:rgba(255,255,255,.56)!important}
+    .store-item{
+      min-width:0;height:58px;display:flex;align-items:center;justify-content:center;
+      border-radius:11px;overflow:hidden
+    }
+    .play-link{background:#000;line-height:0}
+    .play-link:active{transform:scale(.985)}
+    .play-badge{display:block;width:100%;height:100%;object-fit:contain}
+    .appstore-coming{
+      padding:8px 10px;background:#000;color:#fff;border:1px solid rgba(255,255,255,.18);
+      gap:8px;text-align:left
+    }
+    .apple-mark{font-size:27px;line-height:1;flex:0 0 auto}
+    .appstore-copy{min-width:0}
+    .appstore-copy small{display:block;font-size:9px;line-height:1.1;color:#ddd}
+    .appstore-copy strong{display:block;font-size:15px;line-height:1.25;white-space:nowrap}
+    .store-note{
+      grid-column:1/-1;font-size:11px!important;line-height:1.5!important;
+      color:rgba(255,255,255,.56)!important;margin:2px 0 0!important
+    }
 
     footer{padding:24px 20px 34px;background:var(--brand);color:rgba(255,255,255,.55);text-align:center;font-size:12px;line-height:1.9}
     footer a{color:rgba(255,255,255,.82)}
 
+    @media(max-width:360px){
+      .store-area{gap:8px}
+      .store-item{height:54px}
+      .appstore-copy strong{font-size:13px}
+    }
     @media(min-width:640px){
       body{padding:36px 0}
       .page{border-radius:30px;box-shadow:0 18px 70px rgba(0,0,0,.10)}
@@ -149,25 +143,58 @@
 
     <section class="features">
       <h2 class="section-title">커뮤니티를<br>더 편하게 읽는 방법</h2>
+
       <div class="feature">
-        <div class="badge">☰</div>
-        <div><h3>여러 커뮤니티를 한곳에서</h3><p>사이트를 하나씩 돌아다닐 필요 없이 커뮤집 하나에서 확인하세요.</p></div>
+        <div class="badge" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <rect x="4" y="4" width="6" height="6" rx="1.5"></rect>
+            <rect x="14" y="4" width="6" height="6" rx="1.5"></rect>
+            <rect x="4" y="14" width="6" height="6" rx="1.5"></rect>
+            <rect x="14" y="14" width="6" height="6" rx="1.5"></rect>
+          </svg>
+        </div>
+        <div><h3>여러 커뮤니티를 한곳에서</h3><p>자주 보는 커뮤니티를 한곳에서 빠르게 확인하세요.</p></div>
       </div>
+
       <div class="feature">
-        <div class="badge">★</div>
-        <div><h3>즐겨찾는 게시판만 모아서</h3><p>자주 보는 게시판을 골라 나만의 커뮤니티 목록을 만들 수 있습니다.</p></div>
+        <div class="badge" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 3.8l2.5 5.1 5.6.8-4 3.9.9 5.5-5-2.7-5 2.7.9-5.5-4-3.9 5.6-.8z"></path>
+          </svg>
+        </div>
+        <div><h3>즐겨찾는 게시판만 모아서</h3><p>자주 보는 게시판만 골라 깔끔하게 모아보세요.</p></div>
       </div>
+
       <div class="feature">
-        <div class="badge">Aa</div>
-        <div><h3>내가 편한 읽기 환경</h3><p>글자 크기, 여백, 테마 등을 조절해 원하는 방식으로 읽어보세요.</p></div>
+        <div class="badge" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M5 19h14"></path>
+            <path d="M7 6h10"></path>
+            <path d="M9 6L7 19"></path>
+            <path d="M15 6l2 13"></path>
+          </svg>
+        </div>
+        <div><h3>내가 편한 읽기 환경</h3><p>글자 크기, 여백, 테마를 내 취향에 맞게 조절하세요.</p></div>
       </div>
+
       <div class="feature">
-        <div class="badge">🔔</div>
-        <div><h3>관심 키워드 새 글 알림</h3><p>알림 키워드와 게시판을 골라두면 휴대폰이 백그라운드에서 새 글을 확인하고, 제목에 키워드가 포함되면 알려줍니다.</p></div>
+        <div class="badge" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path>
+            <path d="M10 21h4"></path>
+          </svg>
+        </div>
+        <div><h3>관심 키워드 새 글 알림</h3><p>선택한 게시판에 관심 키워드 새 글이 올라오면 알려줍니다.</p></div>
       </div>
+
       <div class="feature">
-        <div class="badge">🔒</div>
-        <div><h3>게시판 잠금</h3><p>원하는 게시판을 잠그고 생체인증 또는 기기 화면 잠금으로 본인 확인 후 열 수 있습니다.</p></div>
+        <div class="badge" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <rect x="5" y="11" width="14" height="10" rx="2"></rect>
+            <path d="M8 11V8a4 4 0 1 1 8 0v3"></path>
+          </svg>
+        </div>
+        <div><h3>게시판 잠금</h3><p>잠근 게시판은 생체인증이나 기기 잠금으로 보호합니다.</p></div>
       </div>
     </section>
 
@@ -188,7 +215,7 @@
         </div>
         <div>
           <strong>계속 넓어지는 커뮤집</strong>
-          <span>지원 커뮤니티는 앞으로도 계속 추가됩니다.</span>
+          <span>더 많은 커뮤니티를 차례로 지원할 예정입니다.</span>
         </div>
       </div>
     </section>
@@ -198,17 +225,24 @@
       <p>사용하는 기기에 맞는 스토어에서<br>커뮤집을 다운로드하세요.</p>
 
       <div class="store-area">
-        <a class="play-link" href="https://play.google.com/store/apps/details?id=com.all.community" target="_blank" rel="noopener" aria-label="Google Play에서 커뮤집 다운로드">
+        <a class="store-item play-link"
+           href="https://play.google.com/store/apps/details?id=com.all.community"
+           target="_blank" rel="noopener"
+           aria-label="Google Play 커뮤집 다운로드">
           <img class="play-badge"
                src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
-               alt="Google Play에서 다운로드">
+               alt="Get it on Google Play">
         </a>
 
-        <div class="appstore-coming" aria-label="App Store 출시 준비중">
-          <strong>App Store</strong>
-          <span>출시 준비중</span>
+        <div class="store-item appstore-coming" aria-label="App Store 출시 준비중">
+          <div class="apple-mark"></div>
+          <div class="appstore-copy">
+            <small>Download on the</small>
+            <strong>App Store</strong>
+          </div>
         </div>
-        <p class="store-note">App Store 상품 페이지가 공개되면 공식 App Store 배지로 연결됩니다.</p>
+
+        <p class="store-note">App Store는 출시 준비 중입니다.</p>
       </div>
     </section>
 
