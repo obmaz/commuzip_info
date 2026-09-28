@@ -85,23 +85,40 @@
       max-width:430px;margin:0 auto;align-items:stretch
     }
     .store-item{
-      min-width:0;height:58px;display:flex;align-items:center;justify-content:center;
-      border-radius:11px;overflow:hidden
+      min-width:0;height:58px;display:flex;align-items:center;justify-content:flex-start;
+      gap:10px;padding:8px 14px;border-radius:12px;
+      background:#fff;color:var(--text);border:1px solid rgba(255,255,255,.68);
+      box-shadow:0 5px 16px rgba(0,0,0,.09);font:inherit;text-align:left;cursor:pointer
     }
-    .play-link{background:#000;line-height:0}
-    .play-link:active{transform:scale(.985)}
-    .play-badge{display:block;width:100%;height:100%;object-fit:contain}
-    .appstore-coming{
-      padding:8px 10px;background:#000;color:#fff;border:1px solid rgba(255,255,255,.18);
-      gap:8px;text-align:left
+    .store-item:active{transform:scale(.985)}
+    .store-logo{
+      flex:0 0 28px;width:28px;height:28px;display:grid;place-items:center;color:var(--brand)
     }
-    .apple-mark{font-size:27px;line-height:1;flex:0 0 auto}
-    .appstore-copy{min-width:0}
-    .appstore-copy small{display:block;font-size:9px;line-height:1.1;color:#ddd}
-    .appstore-copy strong{display:block;font-size:15px;line-height:1.25;white-space:nowrap}
+    .store-logo svg{width:25px;height:25px;display:block}
+    .play-link{line-height:1}
+    .apple-mark{font-size:29px;line-height:1;color:#111}
+    .store-copy{min-width:0}
+    .store-copy small{display:block;font-size:9px;line-height:1.15;color:#7b8588}
+    .store-copy strong{display:block;font-size:15px;line-height:1.25;white-space:nowrap;color:#111}
     .store-note{
       grid-column:1/-1;font-size:11px!important;line-height:1.5!important;
-      color:rgba(255,255,255,.56)!important;margin:2px 0 0!important
+      color:rgba(255,255,255,.62)!important;margin:2px 0 0!important
+    }
+    .coming-modal{
+      position:fixed;inset:0;z-index:50;display:none;align-items:center;justify-content:center;
+      padding:24px;background:rgba(13,27,30,.42);backdrop-filter:blur(4px)
+    }
+    .coming-modal.open{display:flex}
+    .coming-card{
+      width:min(100%,320px);padding:26px 22px 20px;border-radius:22px;background:#fff;color:var(--text);
+      text-align:center;box-shadow:0 24px 70px rgba(0,0,0,.22)
+    }
+    .coming-icon{font-size:38px;line-height:1;margin-bottom:12px;color:#111}
+    .coming-card h3{font-size:20px;margin:0 0 7px}
+    .coming-card p{font-size:14px;line-height:1.55;color:var(--muted);margin:0 0 20px}
+    .coming-close{
+      width:100%;height:44px;border:0;border-radius:12px;background:var(--brand);color:#fff;
+      font:inherit;font-size:14px;font-weight:700;cursor:pointer
     }
 
     footer{padding:24px 20px 34px;background:var(--brand);color:rgba(255,255,255,.55);text-align:center;font-size:12px;line-height:1.9}
@@ -110,7 +127,7 @@
     @media(max-width:360px){
       .store-area{gap:8px}
       .store-item{height:54px}
-      .appstore-copy strong{font-size:13px}
+      .store-copy strong{font-size:13px}
     }
     @media(min-width:640px){
       body{padding:36px 0}
@@ -230,18 +247,28 @@
            href="https://play.google.com/store/apps/details?id=com.all.community"
            target="_blank" rel="noopener"
            aria-label="Google Play 커뮤집 다운로드">
-          <img class="play-badge"
-               src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
-               alt="Get it on Google Play">
+          <span class="store-logo" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path fill="currentColor" d="M4.2 3.4c-.4.4-.7 1-.7 1.8v13.6c0 .8.3 1.4.7 1.8l.2.2 8-8v-.2l-8-8-.2.2z"/>
+              <path fill="currentColor" opacity=".72" d="M15.1 15.4l-2.7-2.7v-.2l2.7-2.7 3.5 2c1 .6 1 1.5 0 2l-3.5 1.6z"/>
+              <path fill="currentColor" opacity=".56" d="M15.1 9.8L4.4 3.8c.4-.2.9-.1 1.5.2l7.8 4.4 1.4 1.4z"/>
+              <path fill="currentColor" opacity=".88" d="M15.1 15.4l-1.4 1.4L5.9 21.2c-.6.3-1.1.4-1.5.2l10.7-6z"/>
+            </svg>
+          </span>
+          <span class="store-copy">
+            <small>GET IT ON</small>
+            <strong>Google Play</strong>
+          </span>
         </a>
 
-        <div class="store-item appstore-coming" aria-label="App Store 출시 준비중">
-          <div class="apple-mark"></div>
-          <div class="appstore-copy">
+        <button class="store-item appstore-coming" type="button"
+                onclick="openComingSoon()" aria-label="App Store 출시 준비중">
+          <span class="store-logo apple-mark" aria-hidden="true"></span>
+          <span class="store-copy">
             <small>Download on the</small>
             <strong>App Store</strong>
-          </div>
-        </div>
+          </span>
+        </button>
 
         <p class="store-note">App Store는 출시 준비 중입니다.</p>
       </div>
@@ -252,5 +279,29 @@
       <div>© 2026 커뮤집</div>
     </footer>
   </main>
+
+  <div class="coming-modal" id="comingModal" role="dialog" aria-modal="true" aria-labelledby="comingTitle" onclick="closeComingSoon(event)">
+    <div class="coming-card">
+      <div class="coming-icon"></div>
+      <h3 id="comingTitle">App Store 준비중</h3>
+      <p>iOS 버전은 출시를 준비하고 있습니다.<br>조금만 기다려 주세요.</p>
+      <button class="coming-close" type="button" onclick="closeComingSoon()">확인</button>
+    </div>
+  </div>
+
+  <script>
+    function openComingSoon(){
+      document.getElementById('comingModal').classList.add('open');
+      document.body.style.overflow='hidden';
+    }
+    function closeComingSoon(event){
+      if(event && event.target !== event.currentTarget) return;
+      document.getElementById('comingModal').classList.remove('open');
+      document.body.style.overflow='';
+    }
+    document.addEventListener('keydown', function(event){
+      if(event.key === 'Escape') closeComingSoon();
+    });
+  </script>
 </body>
 </html>
