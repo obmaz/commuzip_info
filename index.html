@@ -54,6 +54,49 @@
 
     .communities{padding:52px 24px;text-align:center}
     .community-list{font-size:14px;line-height:2;color:var(--muted)}
+    .community-more{
+      margin:22px auto 0;
+      max-width:360px;
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding:14px 16px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:#f8fafa;
+      text-align:left;
+    }
+    .community-more-icon{
+      flex:0 0 34px;
+      width:34px;
+      height:34px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      background:var(--brand-soft);
+      color:var(--brand);
+    }
+    .community-more-icon svg{
+      width:17px;
+      height:17px;
+      stroke:currentColor;
+      fill:none;
+      stroke-width:2;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+    }
+    .community-more strong{
+      display:block;
+      font-size:14px;
+      color:var(--text);
+      margin-bottom:2px;
+    }
+    .community-more span{
+      display:block;
+      font-size:12px;
+      line-height:1.5;
+      color:var(--muted);
+    }
 
     .download{padding:54px 24px 44px;background:var(--brand);color:#fff;text-align:center}
     .download h2{font-size:29px;letter-spacing:-.9px;margin:0}
@@ -134,6 +177,19 @@
         클리앙 · 다모앙 · 뽐뿌 · 어미새<br>
         쿨엔조이 · 퀘이사존 · 네이버 카페<br>
         디시인사이드 · 루리웹 · 아카라이브
+      </div>
+
+      <div class="community-more">
+        <div class="community-more-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 5v14"></path>
+            <path d="M5 12h14"></path>
+          </svg>
+        </div>
+        <div>
+          <strong>계속 넓어지는 커뮤집</strong>
+          <span>지원 커뮤니티는 앞으로도 계속 추가됩니다.</span>
+        </div>
       </div>
     </section>
 
