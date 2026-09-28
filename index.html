@@ -12,7 +12,7 @@
   <style>
     :root{
       --brand:#246771;--brand-soft:#edf5f5;--text:#142124;--muted:#697579;
-      --line:#e5ebec;--bg:#f3f6f6;--card:#fff
+      --line:#e5ebec;--bg:#f3f6f6
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
@@ -29,12 +29,21 @@
     h1{font-size:40px;letter-spacing:-1.6px;line-height:1.1;margin:0}
     .lead{font-size:23px;font-weight:760;line-height:1.42;letter-spacing:-.8px;margin:15px 0 0}
     .desc{font-size:15px;line-height:1.7;color:var(--muted);max-width:390px;margin:12px auto 0}
-    .screens-wrap{padding:26px 0 46px}
-    .screens{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:8px 24px 26px;scrollbar-width:none}
+
+    .screens-wrap{padding:26px 0 48px}
+    .screens{
+      display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;
+      padding:8px 24px 26px;scrollbar-width:none
+    }
     .screens::-webkit-scrollbar{display:none}
-    .shot{flex:0 0 76%;max-width:330px;margin:0;border:1px solid var(--line);border-radius:28px;overflow:hidden;background:#f4f6f6;box-shadow:0 18px 42px rgba(0,0,0,.10);scroll-snap-align:center}
+    .shot{
+      flex:0 0 76%;max-width:330px;margin:0;border:1px solid var(--line);border-radius:28px;
+      overflow:hidden;background:#f4f6f6;box-shadow:0 18px 42px rgba(0,0,0,.10);
+      scroll-snap-align:center
+    }
     .shot img{display:block;width:100%;height:auto}
     .hint{text-align:center;font-size:12px;color:#9aa3a5;margin-top:-12px}
+
     .features{margin:0 18px;padding:34px 24px;border-radius:28px;background:var(--brand-soft)}
     .section-title{margin:0 0 20px;text-align:center;font-size:25px;line-height:1.35;letter-spacing:-.8px}
     .feature{display:flex;gap:15px;padding:16px 0;align-items:flex-start}
@@ -42,21 +51,29 @@
     .badge{flex:0 0 42px;height:42px;border-radius:13px;background:#fff;color:var(--brand);display:grid;place-items:center;font-weight:800;font-size:17px}
     .feature h3{font-size:16px;margin:1px 0 4px}
     .feature p{font-size:14px;line-height:1.58;color:var(--muted);margin:0}
+
     .communities{padding:52px 24px;text-align:center}
     .community-list{font-size:14px;line-height:2;color:var(--muted)}
+
     .download{padding:54px 24px 44px;background:var(--brand);color:#fff;text-align:center}
     .download h2{font-size:29px;letter-spacing:-.9px;margin:0}
-    .download p{font-size:14px;line-height:1.65;color:rgba(255,255,255,.76);margin:10px 0 28px}
-    .store-buttons{display:grid;gap:11px;max-width:350px;margin:0 auto}
-    .store{display:flex;align-items:center;min-height:64px;padding:10px 18px;border-radius:16px;background:#0e1111;text-align:left;transition:.15s ease}
-    .store:active{transform:scale(.985);opacity:.92}
-    .store-mark{width:36px;margin-right:13px;text-align:center;font-size:25px}
-    .store small{display:block;color:#c7cdcd;font-size:10px;letter-spacing:.03em}
-    .store strong{display:block;font-size:18px;margin-top:2px}
-    .store.pending{opacity:.62;cursor:default}
-    .pending-note{font-size:11px;color:#d1d5d5;margin-left:auto}
+    .download p{font-size:14px;line-height:1.65;color:rgba(255,255,255,.76);margin:10px 0 24px}
+    .store-area{display:flex;flex-direction:column;align-items:center;gap:12px}
+    .play-badge{display:block;width:210px;max-width:100%;height:auto}
+    .play-link{display:inline-block;line-height:0}
+    .play-link:active{transform:scale(.985)}
+    .appstore-coming{
+      width:190px;min-height:56px;border:1px solid rgba(255,255,255,.42);border-radius:12px;
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      color:rgba(255,255,255,.92);background:rgba(0,0,0,.12)
+    }
+    .appstore-coming strong{font-size:15px}
+    .appstore-coming span{font-size:11px;color:rgba(255,255,255,.65);margin-top:2px}
+    .store-note{font-size:11px!important;margin:2px 0 0!important;color:rgba(255,255,255,.56)!important}
+
     footer{padding:24px 20px 34px;background:var(--brand);color:rgba(255,255,255,.55);text-align:center;font-size:12px;line-height:1.9}
     footer a{color:rgba(255,255,255,.82)}
+
     @media(min-width:640px){
       body{padding:36px 0}
       .page{border-radius:30px;box-shadow:0 18px 70px rgba(0,0,0,.10)}
@@ -76,10 +93,15 @@
     <section class="screens-wrap" aria-label="커뮤집 앱 화면">
       <div class="screens">
         <figure class="shot"><img src="./assets/01-menu.png" alt="커뮤집 커뮤니티 메뉴 화면"></figure>
-        <figure class="shot"><img src="./assets/02-favorites.png" alt="커뮤집 즐겨찾기 화면"></figure>
-        <figure class="shot"><img src="./assets/03-post.png" alt="커뮤집 게시글 화면"></figure>
+        <figure class="shot"><img loading="lazy" src="./assets/02-favorites.png" alt="커뮤집 즐겨찾기 화면"></figure>
+        <figure class="shot"><img loading="lazy" src="./assets/03-post.png" alt="커뮤집 게시글 화면"></figure>
+        <figure class="shot"><img loading="lazy" src="./assets/04-settings.png" alt="커뮤집 설정 화면"></figure>
+        <figure class="shot"><img loading="lazy" src="./assets/05-dark.png" alt="커뮤집 다크 모드 화면"></figure>
+        <figure class="shot"><img loading="lazy" src="./assets/06-add.png" alt="커뮤집 게시판 추가 화면"></figure>
+        <figure class="shot"><img loading="lazy" src="./assets/07-photo.png" alt="커뮤집 사진 보기 화면"></figure>
+        <figure class="shot"><img loading="lazy" src="./assets/08-read.png" alt="커뮤집 읽기 화면"></figure>
       </div>
-      <div class="hint">옆으로 넘겨 앱 화면을 확인하세요</div>
+      <div class="hint">8개의 실제 화면을 옆으로 넘겨 확인하세요</div>
     </section>
 
     <section class="features">
@@ -110,16 +132,19 @@
     <section class="download">
       <h2>커뮤집 시작하기</h2>
       <p>사용하는 기기에 맞는 스토어에서<br>커뮤집을 다운로드하세요.</p>
-      <div class="store-buttons">
-        <a class="store" href="https://play.google.com/store/apps/details?id=com.all.community" target="_blank" rel="noopener">
-          <div class="store-mark">▶</div>
-          <div><small>GET IT ON</small><strong>Google Play</strong></div>
+
+      <div class="store-area">
+        <a class="play-link" href="https://play.google.com/store/apps/details?id=com.all.community" target="_blank" rel="noopener" aria-label="Google Play에서 커뮤집 다운로드">
+          <img class="play-badge"
+               src="https://play.google.com/intl/en_us/badges/static/images/badges/ko_badge_web_generic.png"
+               alt="Google Play에서 다운로드">
         </a>
-        <div class="store pending" aria-disabled="true">
-          <div class="store-mark"></div>
-          <div><small>Download on the</small><strong>App Store</strong></div>
-          <span class="pending-note">준비중</span>
+
+        <div class="appstore-coming" aria-label="App Store 출시 준비중">
+          <strong>App Store</strong>
+          <span>출시 준비중</span>
         </div>
+        <p class="store-note">App Store 상품 페이지가 공개되면 공식 App Store 배지로 연결됩니다.</p>
       </div>
     </section>
 
