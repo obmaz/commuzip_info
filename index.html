@@ -81,10 +81,6 @@
     .download h2{font-size:29px;letter-spacing:-.9px;margin:0}
     .download>p{font-size:14px;line-height:1.65;color:rgba(255,255,255,.76);margin:10px 0 24px}
     .store-area{
-      display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;
-      max-width:430px;margin:0 auto;align-items:stretch
-    }
-    .store-area{
       display:flex;
       justify-content:center;
       align-items:center;
@@ -95,38 +91,42 @@
     }
     .store-badge-link,
     .store-badge-button{
-      display:inline-flex;
+      display:flex;
       align-items:center;
       justify-content:center;
+      width:176px;
+      height:54px;
       padding:0;
       margin:0;
       border:0;
       background:transparent;
       cursor:pointer;
-      line-height:0
+      line-height:0;
+      overflow:hidden
     }
     .store-badge-link:active,
     .store-badge-button:active{transform:scale(.985)}
     .store-badge{
       display:block;
       width:auto;
-      max-width:none
+      max-width:none;
+      flex:none
     }
     .appstore-badge{
       height:54px;
       width:auto
     }
     .play-badge{
-      height:64px;
+      height:68px;
       width:auto;
-      margin:-5px 0
+      margin:0
     }
     .store-note{
       flex-basis:100%;
       font-size:11px!important;
       line-height:1.5!important;
       color:rgba(255,255,255,.62)!important;
-      margin:2px 0 0!important
+      margin:4px 0 0!important
     }
     .coming-modal{
       position:fixed;inset:0;z-index:50;display:none;align-items:center;justify-content:center;
@@ -150,8 +150,10 @@
 
     @media(max-width:360px){
       .store-area{gap:8px}
+      .store-badge-link,
+      .store-badge-button{width:158px;height:48px}
       .appstore-badge{height:48px}
-      .play-badge{height:57px;margin:-4px 0}
+      .play-badge{height:61px}
     }
     @media(min-width:640px){
       body{padding:36px 0}
