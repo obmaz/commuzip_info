@@ -94,7 +94,6 @@
       display:flex;
       align-items:center;
       justify-content:center;
-      width:176px;
       height:54px;
       padding:0;
       margin:0;
@@ -102,8 +101,10 @@
       background:transparent;
       cursor:pointer;
       line-height:0;
-      overflow:hidden
+      overflow:visible
     }
+    .store-badge-button{width:176px}
+    .store-badge-link{width:186px}
     .store-badge-link:active,
     .store-badge-button:active{transform:scale(.985)}
     .store-badge{
@@ -150,8 +151,8 @@
 
     @media(max-width:360px){
       .store-area{gap:8px}
-      .store-badge-link,
       .store-badge-button{width:158px;height:48px}
+      .store-badge-link{width:168px;height:48px}
       .appstore-badge{height:48px}
       .play-badge{height:62px}
     }
