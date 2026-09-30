@@ -14,14 +14,32 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Install Pillow
+        run: python -m pip install --quiet pillow
+
       - name: Convert screenshots
         run: |
-          set -e
-          for f in assets/01-menu.png assets/02-favorites.png assets/03-post.png assets/04-settings.png assets/05-dark.png assets/06-add.png assets/08-read.png; do
-            out="${f%.png}.jpg"
-            ffmpeg -loglevel error -y -i "$f" -q:v 5 "$out"
-            test -s "$out"
-          done
+          python - <<'PY'
+          from PIL import Image
+          from pathlib import Path
+          files = [
+              "assets/01-menu.png",
+              "assets/02-favorites.png",
+              "assets/03-post.png",
+              "assets/04-settings.png",
+              "assets/05-dark.png",
+              "assets/06-add.png",
+              "assets/08-read.png",
+          ]
+          for name in files:
+              src = Path(name)
+              dst = src.with_suffix(".jpg")
+              im = Image.open(src).convert("RGB")
+              im.save(dst, "JPEG", quality=84, optimize=True, progressive=True)
+              if dst.stat().st_size <= 0:
+                  raise SystemExit(f"empty output: {dst}")
+              print(dst, dst.stat().st_size)
+          PY
 
       - name: Update landing page
         run: |
