@@ -1,0 +1,48 @@
+name: Convert landing screenshots to JPG
+
+on:
+  push:
+    paths:
+      - ".github/workflows/convert-screenshots.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  convert:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Convert screenshots
+        run: |
+          set -e
+          for f in assets/01-menu.png assets/02-favorites.png assets/03-post.png assets/04-settings.png assets/05-dark.png assets/06-add.png assets/08-read.png; do
+            out="${f%.png}.jpg"
+            ffmpeg -loglevel error -y -i "$f" -q:v 5 "$out"
+            test -s "$out"
+          done
+
+      - name: Update landing page
+        run: |
+          sed -i \
+            -e 's#01-menu.png#01-menu.jpg#g' \
+            -e 's#02-favorites.png#02-favorites.jpg#g' \
+            -e 's#03-post.png#03-post.jpg#g' \
+            -e 's#04-settings.png#04-settings.jpg#g' \
+            -e 's#05-dark.png#05-dark.jpg#g' \
+            -e 's#06-add.png#06-add.jpg#g' \
+            -e 's#08-read.png#08-read.jpg#g' \
+            index.html
+
+      - name: Remove old PNG screenshots
+        run: |
+          rm assets/01-menu.png assets/02-favorites.png assets/03-post.png assets/04-settings.png assets/05-dark.png assets/06-add.png assets/08-read.png
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Convert landing screenshots to JPG"
+          git push
